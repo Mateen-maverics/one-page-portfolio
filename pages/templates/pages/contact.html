@@ -37,6 +37,7 @@
                 <li class="nav-item"><a class="nav-link" href="{% url "education" %}">Education</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url "projects" %}">Project<a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url "contact" %}">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url "view_contact" %}">View Contact</a></li>
             </ul>
         </div>
     </div>
@@ -45,20 +46,25 @@
 <section id="contact" class="py-5"> 
      <div class="container">
         <h2>Contact Me</h2>
-        <form>
+       
+        <form method="post">
+             {% csrf_token %}
             <div class="mb-3">
                 <label for="name" class="form-label">Your Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
             </div>
             <div class="mb-3">
                 <label for="message" class="form-label">Your Message</label>
-                <textarea class="form-control" id="message" rows="4"></textarea>
+                <textarea class="form-control" name="message" id="message" rows="4"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Send Message</button>
+             {% if success %}
+                <p style="color: green;">Message sent successfully!</p>
+             {% endif %}
         </form>
     </div>
 </section>
