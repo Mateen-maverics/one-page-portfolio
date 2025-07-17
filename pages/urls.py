@@ -1,5 +1,5 @@
 from django.urls import path
-from pages.views import HomePageView, AboutPageView, EducationPageView, ProjectsPageView, ContactPageView, ContactFormResultView
+from pages.views import *
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
@@ -7,5 +7,6 @@ urlpatterns = [
     path('education/', EducationPageView.as_view(), name='education'),
     path('projects/', ProjectsPageView.as_view(), name='projects'),
     path('contact/', ContactPageView.as_view(), name='contact'),
-    path('view_contact/', ContactFormResultView.as_view(), name='view_contact'), 
+    path('contact/list/', ContactFormResultView.as_view(), name='view_contact'), 
+    path('contact/details/<int:pk>/', ContactDetailView.as_view(), name='detail_contact')
 ]

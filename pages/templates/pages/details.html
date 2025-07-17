@@ -52,15 +52,14 @@
 <section id="education" class="py-5">
     <div class="container">
         <h2>Contact Page Result</h2>
-        <ol>
-        {% for contact in contact_list %}
-        
-            <li><a href="{% url 'detail_contact' contact.pk %}" target="_blank">{{contact.name}}</a></li>
-            <ul>
-                <li>{{contact.email}}</li>
-            </ul>
-        {% endfor %}
-        </ol>
+        <ul>
+            <li><strong>Name: </strong>{{contact.name}}</li>
+            <li><strong>Email: </strong>{{contact.email}}</li>
+            <li><strong>Message: </strong>{{contact.message}}</li>
+            <li><strong>Time Created: </strong>{{contact.created_at}}</li>
+        </ul>
+
+        <a class="btn btn-primary" href="{% url 'view_contact' %}" >Back to list</a>
     </div>
 </section>
 
